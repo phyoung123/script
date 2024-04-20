@@ -3,7 +3,7 @@
 '''
 use this script to perturb the 2D materials without changing the vacuum layer
 
-PLEASE mind line 36
+PLEASE mind line 38
 
 Run:
     python perturb-2D.py
