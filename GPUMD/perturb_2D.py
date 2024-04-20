@@ -8,9 +8,9 @@ PLEASE mind line 38
 Run:
     python perturb-2D.py
 
+Modified by Feiyang
 '''
 
-__author__ = 'Feiyang Xu'
 
 import os
 import sys
