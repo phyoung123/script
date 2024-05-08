@@ -50,6 +50,7 @@ do
              echo $syst_numb_atom >> $writ_dire/$writ_file
              latt=$(grep -A 7 "VOLUME and BASIS-vectors are now" $i |tail -n 3 |sed 's/-/ -/g'  |awk '{print $1,$2,$3}' |xargs)
              ener=$(grep "free  energy   TOTEN" $i | tail -1 | awk '{printf "%.6f\n", $5 - '$syst_numb_atom' * '$isol_ener'}')
+             #这个free  energy中间两个空格就是提取的最终能量，每次电子步迭代的free energy TOTEN中间只有一个空格。其实这里后面接了tail -1也无所谓了，反正会提取到最后一步的能量。
              if [[ $viri_logi -eq 1 ]]
              then
                    viri=$(grep -A 20 "FORCE on cell =-STRESS" $i | grep "Total " | tail -n 1 | awk '{print $2,$5,$7,$5,$3,$6,$7,$6,$4}')
