@@ -8,7 +8,7 @@ Author:
 
 import dpdata
 
-perturbed_system = dpdata.System("./POSCAR").perturb(
+perturbed_system = dpdata.System("./POSCAR", fmt='vasp/poscar').perturb(
     pert_num=3,
     cell_pert_fraction=0.05,
     atom_pert_distance=0.1,
