@@ -15,7 +15,7 @@ selected_i = sampler.select(des, [])
 write('selected.xyz', [a[i] for  i in selected_i])
 
 # 创建一个包含 train.xyz 中所有原子索引的列表
-all_indices = list(range(len(a))
+all_indices = list(range(len(a)))
 
 # 从所有索引中排除已选择的索引
 remaining_indices = [i for i in all_indices if i not in selected_i]
