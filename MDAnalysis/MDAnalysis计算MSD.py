@@ -8,7 +8,7 @@ print(u.trajectory)
 # print(u.atoms.positions)
 print(u.atoms)
 
-MSD = msd.EinsteinMSD(u, select='type O', msd_type='xyz', fft=True) # 根据前面 print(u.atoms)查看有哪几个type原子
+MSD = msd.EinsteinMSD(u, select='type O', msd_type='xyz', fft=True) # 根据前面 print(u.atoms.types)查看有哪几个type原子
 MSD.run()
 msd =  MSD.results.timeseries
 
