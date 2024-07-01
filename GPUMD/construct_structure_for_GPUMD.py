@@ -22,7 +22,8 @@ print(gnr)
 
 # Ly = 12
 # split = [0, Ly, 36.07964]
-# group_method, ncounts = gnr.group_by_position(split, direction='y')
+# group_method, ncounts = gnr.group_by_position(split, direction='y') #按距离分组
+# group_method, ncounts = gnr.group_by_symbol({'Ca':0, 'Si':1, 'O':2})  #按symbol分组
 # print("Atoms per group:", ncounts)
 # print("Total atoms:", sum(ncounts))
 
