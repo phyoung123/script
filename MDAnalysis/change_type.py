@@ -26,7 +26,7 @@ def modify_xyz_file(file_path):
             atom_line = frame_lines[i + 2]  # 跳过前两行
             parts = atom_line.split()
             parts[0] = 'A'  # 修改原子类型为A
-            frame_lines[i + 2] = ' '.join(parts) + '\n'
+            frame_lines[i + 2] = ' '.join(parts) + '\n'   #将parts列表用一个空格 ' '连接在一起，然后在末尾添加一个换行符 '\n'
 
         modified_lines.extend(frame_lines)
 
