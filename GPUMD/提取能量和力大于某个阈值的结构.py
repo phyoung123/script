@@ -46,7 +46,7 @@ for idx in structure_indices:
 import numpy as np
 from ase.io import read, write
 
-atoms = read('train.xyz', index=":")
+atoms = read('train.xyz', index=":")  # 读取FPS抽取到的结构并重新做的DFT计算
 
 file_f = 'force_train.out'
 force = np.loadtxt(file_f)
