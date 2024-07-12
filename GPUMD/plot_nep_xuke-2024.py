@@ -126,10 +126,10 @@ else:
 for_min -= (for_max-for_min)*0.1
 for_max += (for_max-for_min)*0.1
 plot([for_min, for_max], [for_min, for_max], c = "grey", lw = 3)
-plot(force_train[:, 3], force_train[:, 0], 'o', c="C2", ms = 5, label="Train dataset (RMSE={0:4.2f} mev/atom)".format(loss[-1, 5]*1000))
+plot(force_train[:, 3], force_train[:, 0], 'o', c="C2", ms = 5, label=r"Train dataset (RMSE={0:4.2f} mev/$\rm{{\AA}}$)".format(loss[-1, 5]*1000))
 plot(force_train[:, 4:6], force_train[:, 1:3], 'o', c="C2", ms = 5)
 if test_flag == 1:
-    plot(force_test[:, 3], force_test[:, 0], 'o', c="C7", ms = 2, label="Test dataset (RMSE={0:4.2f} mev/atom)".format(loss[-1, 8]*1000))
+    plot(force_test[:, 3], force_test[:, 0], 'o', c="C7", ms = 2, label=r"Test dataset (RMSE={0:4.2f} mev/$\rm{{\AA}}$)".format(loss[-1, 8]*1000))
     plot(force_test[:, 4:6], force_test[:, 1:3], 'o', c="C7", ms = 2)
 #text(for_min*0.9+for_max*0.1, for_min*0.25+for_max*0.75, 'RMSE = {0:4.2f} mev/A'.format(loss[-1, 5]*1000), fontsize=13)
 xlim([for_min, for_max])
