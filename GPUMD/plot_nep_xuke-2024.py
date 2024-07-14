@@ -193,7 +193,7 @@ if stress_train.shape[1] == 2:
     plot(stress_train[ptra, 1], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
 elif stress_train.shape[1] == 12:
     plot(stress_train[ptra, 6], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
-    plot(stress_train[ptra, 7:12], stress_train[ptra, 1:6], 'o', c="C3", ms = 5)
+    plot(stress_train[ptra, 7:9], stress_train[ptra, 1:3], 'o', c="C3", ms = 5)
 if test_flag == 1:
     if stress_test.shape[1] == 2:
         plot(stress_test[ptes, 1], stress_test[ptes, 0], 'o', c="C3", ms = 2, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
