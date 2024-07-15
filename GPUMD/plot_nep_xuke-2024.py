@@ -103,8 +103,8 @@ else:
     ene_max = np.max(energy_train)
 ene_min -= (ene_max-ene_min)*0.1
 ene_max += (ene_max-ene_min)*0.1
-plot([ene_min, ene_max], [ene_min, ene_max], c = "grey", lw = 3)
-plot(energy_train[:, 1], energy_train[:, 0], 'o', c="C0", ms = 5, label="Train dataset (RMSE={0:4.2f} mev/atom)".format(loss[-1, 4]*1000))
+plot([ene_min, ene_max], [ene_min, ene_max], c = "grey", lw = 3, zorder=2)
+plot(energy_train[:, 1], energy_train[:, 0], 'o', c="C0", ms = 5, label="Train dataset (RMSE={0:4.2f} mev/atom)".format(loss[-1, 4]*1000), zorder=1)
 if test_flag == 1:
     plot(energy_test[:, 1], energy_test[:, 0], 'o', c="C6", ms = 2, label="Test dataset (RMSE={0:4.2f} mev/atom)".format(loss[-1, 7]*1000))
 #text(ene_min*0.9+ene_max*0.1, ene_min*0.25+ene_max*0.75, 'RMSE = {0:4.2f} mev/atom'.format(loss[-1, 4]*1000), fontsize=13)
@@ -125,9 +125,10 @@ else:
     for_max = np.max(force_train)
 for_min -= (for_max-for_min)*0.1
 for_max += (for_max-for_min)*0.1
-plot([for_min, for_max], [for_min, for_max], c = "grey", lw = 3)
-plot(force_train[:, 3], force_train[:, 0], 'o', c="C2", ms = 5, label=r"Train dataset (RMSE={0:4.2f} mev/$\rm{{\AA}}$)".format(loss[-1, 5]*1000))
-plot(force_train[:, 4:6], force_train[:, 1:3], 'o', c="C2", ms = 5)
+plot([for_min, for_max], [for_min, for_max], c = "grey", lw = 3, zorder=2)
+plot(force_train[:, 3], force_train[:, 0], 'o', c="C1", ms = 5, label=r"Train dataset (RMSE={0:4.2f} mev/$\rm{{\AA}}$)".format(loss[-1, 5]*1000), zorder=1)
+plot(force_train[:, 4], force_train[:, 1], 'o', c="C2", ms = 5, label='y direction', zorder=1)
+plot(force_train[:, 5], force_train[:, 2], 'o', c="C3", ms = 5, label='z direction', zorder=1)
 if test_flag == 1:
     plot(force_test[:, 3], force_test[:, 0], 'o', c="C7", ms = 2, label=r"Test dataset (RMSE={0:4.2f} mev/$\rm{{\AA}}$)".format(loss[-1, 8]*1000))
     plot(force_test[:, 4:6], force_test[:, 1:3], 'o', c="C7", ms = 2)
@@ -188,12 +189,13 @@ vir_min -= (vir_max-vir_min)*0.1
 vir_max += (vir_max-vir_min)*0.1
 #vir_min = -0.09
 #vir_max =  0.04
-plot([vir_min, vir_max], [vir_min, vir_max], c = "grey", lw = 1)
+plot([vir_min, vir_max], [vir_min, vir_max], c = "grey", lw = 1, zorder=2)
 if stress_train.shape[1] == 2:
-    plot(stress_train[ptra, 1], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
+    plot(stress_train[ptra, 1], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000), zorder=1)
 elif stress_train.shape[1] == 12:
-    plot(stress_train[ptra, 6], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
-    plot(stress_train[ptra, 7:9], stress_train[ptra, 1:3], 'o', c="C3", ms = 5)
+    plot(stress_train[ptra, 6], stress_train[ptra, 0], 'o', c="C1", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000), zorder=1)
+    plot(stress_train[ptra, 7], stress_train[ptra, 1], 'o', c="C2", ms = 5, label='yy direction', zorder=1)
+    plot(stress_train[ptra, 8], stress_train[ptra, 2], 'o', c="C3", ms = 5, label='zz direction', zorder=1)
 if test_flag == 1:
     if stress_test.shape[1] == 2:
         plot(stress_test[ptes, 1], stress_test[ptes, 0], 'o', c="C3", ms = 2, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000))
