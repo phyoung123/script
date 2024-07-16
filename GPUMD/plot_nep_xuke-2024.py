@@ -2,7 +2,7 @@
     Run:
         python plot_nep_2024.py
 
-        please mind line 33 and 81
+        please mind line 33 and 63
 
     Author:
         Ke Xu <twtdq(at)qq.com>
