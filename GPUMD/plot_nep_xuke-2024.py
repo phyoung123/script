@@ -37,7 +37,7 @@ def plot_nep(pout):
     plt.subplot(1,2,2)
     plt.scatter(range(len(nep)), nep, s=0.5)
     plt.gcf().set_size_inches(9,3)
-    plt.savefig(pout, dpi=600)
+    plt.savefig(pout, dpi=900)
 
 
 def com_RMSE(fin):
@@ -189,7 +189,7 @@ vir_min -= (vir_max-vir_min)*0.1
 vir_max += (vir_max-vir_min)*0.1
 #vir_min = -0.09
 #vir_max =  0.04
-plot([vir_min, vir_max], [vir_min, vir_max], c = "grey", lw = 1, zorder=2)
+plot([vir_min, vir_max], [vir_min, vir_max], c = "grey", lw = 3, zorder=2)
 if stress_train.shape[1] == 2:
     plot(stress_train[ptra, 1], stress_train[ptra, 0], 'o', c="C3", ms = 5, label="Train dataset (RMSE={0:4.2f} MPa)".format(loss[-1, 6]*1000), zorder=1)
 elif stress_train.shape[1] == 12:
