@@ -1,5 +1,6 @@
 """
 Contributed by Nan Xu
+先用  cp2k2xyz-translation.py转成train.xyz，不平移能量，然后用这个脚本将能量平均值平移到0
 """
 
 import numpy as np
