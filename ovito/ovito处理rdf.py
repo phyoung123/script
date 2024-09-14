@@ -2,11 +2,26 @@ from ovito.io import import_file, export_file
 from ovito.modifiers import CoordinationAnalysisModifier,TimeAveragingModifier
 import os
 
-pipeline = import_file('XDATCAR')
+
+# 丢掉前面一半未平衡的结构
+pipeline = import_file('dump.xyz')
+total_frames = pipeline.source.num_frames
+print(total_frames)
+start_frame = total_frames // 2
+print(start_frame)
+export_file(pipeline, 'new_trajectory_file.xyz', 'xyz', start_frame=start_frame, end_frame=total_frames-1, multiple_frames=True, columns=["Particle Type", "Position.X", "Position.Y", "Position.Z"])
+
+# 检查文件是否生成，若未生成则等待
+while not os.path.exists("new_trajectory_file.xyz"):
+    time.sleep(1)
+
+pipeline = import_file('new_trajectory_file.xyz')
+# pipeline.source.time_range = (start_frame, total_frame-1)
 modifier = CoordinationAnalysisModifier(cutoff=7,number_of_bins=200,partial=True)
 pipeline.modifiers.append(modifier)
 pipeline.modifiers.append(TimeAveragingModifier(operate_on='table:coordination-rdf'))
 export_file(pipeline,"rdf.txt","txt/table",key="coordination-rdf[average]")
+
 
 
 # 检查文件是否生成，若未生成则等待
