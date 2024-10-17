@@ -16,6 +16,9 @@ def generate_strained_structure(prim, strain_lim):
 def generate_deformed_structure(prim, strain_lim):
     R = np.random.uniform(*strain_lim, (3, 3))
     M = np.eye(3) + R
+    # R = np.random.uniform(*strain_lim, (2, 3))   # 微扰2D材料，保持真空层不变
+    # M = np.eye(3)
+    # M[:2, :] += R  
     atoms = prim.copy()
     cell_new = M @ atoms.cell[:]
     atoms.set_cell(cell_new, scale_atoms=True)
