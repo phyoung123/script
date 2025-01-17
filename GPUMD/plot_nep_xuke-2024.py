@@ -37,7 +37,7 @@ def plot_nep(pout):
     plt.subplot(1,2,2)
     plt.scatter(range(len(nep)), nep, s=0.5)
     plt.gcf().set_size_inches(9,3)
-    plt.savefig(pout, dpi=900)
+    plt.savefig(pout, dpi=900, bbox_inches='tight')
 
 
 def com_RMSE(fin):
