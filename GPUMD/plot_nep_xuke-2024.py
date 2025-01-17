@@ -210,7 +210,7 @@ ylabel('NEP stress (GPa)')
 legend(loc="upper left")
 
 subplots_adjust(wspace=0.35, hspace=0.3)
-savefig("RMSE.png", bbox_inches='tight')
+savefig("RMSE.png", dpi=900, bbox_inches='tight')
 plt.close()
 
 plot_nep("nep_txt.png")
