@@ -18,3 +18,5 @@ def cal_r2(y_true, y_pred):
     r2 = 1 - (sse / sst)
     return r2
 
+r2 = r2_score(y_true, y_pred)    # 与 cal_r2 函数等价
+print("sklearn 计算 R^2:", r2)
