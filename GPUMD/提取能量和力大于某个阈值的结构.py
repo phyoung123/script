@@ -78,6 +78,7 @@ for idx in union_set:
 #------------貌似上面的不行----------------
 import numpy as np
 from ase.io import read, write
+import os 
 
 atoms = read('train.xyz', index=":")  # 读取FPS抽取到的结构并重新做的DFT计算
 
@@ -106,7 +107,11 @@ for idx in range(len(forces_diff_reshaped)):
         add_idx.append(idx)
     else:
         testing_idx.append(idx)
-
+if os.path.exists('select.xyz'):
+    os.remove('select.xyz')
+if os.path.exists('test.xyz'):
+    os.remove('test.xyz')
+    
 for idx in add_idx:
     write('select.xyz', atoms[idx], append=True)
 for idx in testing_idx:
