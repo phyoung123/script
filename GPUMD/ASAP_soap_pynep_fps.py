@@ -1,7 +1,7 @@
 '''
 First, you need to use ASAP to generate soap descriptor:
       asap gen_decs -f dump.xyz soap
-Second, the pynep package is used to visualization 
+Second, the pynep package is used to extract soap descriptors and select potential configurations. 
 '''
 
 import re
