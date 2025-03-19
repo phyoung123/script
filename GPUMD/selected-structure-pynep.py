@@ -11,7 +11,7 @@ calc = NEP("nep.txt")
 print(calc)
 des = np.array([np.mean(calc.get_property('descriptor', i), axis=0) for i in a])
 sampler = FarthestPointSample(min_distance=0.01)
-selected_i = sampler.select(des, [])
+selected_i = sampler.select(des, [], max_select=100) #最多选择100个
 write('selected.xyz', [a[i] for  i in selected_i])
 
 # 创建一个包含 train.xyz 中所有原子索引的列表
