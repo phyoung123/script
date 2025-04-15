@@ -29,7 +29,11 @@ write('remaining.xyz', remaining_atoms)
 reducer = PCA(n_components=2)
 reducer.fit(des)
 proj = reducer.transform(des)
-plt.scatter(proj[:,0], proj[:,1], label='all data')
+
+# 上面两句可以组合为：
+# reducer.fit_transform(des)   # 计算降维后的坐标
+
+plt.scatter(proj[:,0], proj[:,1], label='all data')   # 0为样本的第一个主成分 1为样本的第二个主成分
 selected_proj = reducer.transform(np.array([des[i] for i in selected_i]))
 plt.scatter(selected_proj[:,0], selected_proj[:,1], label='selected data')
 plt.legend()
