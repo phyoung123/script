@@ -116,3 +116,6 @@ for idx in add_idx:
     write('select.xyz', atoms[idx], append=True)
 for idx in testing_idx:
     write('test.xyz', atoms[idx], append=True)
+
+print('Selected structure to add (to train): ', len(add_idx))
+print('Ommited structure (to test): ', len(testing_idx))
