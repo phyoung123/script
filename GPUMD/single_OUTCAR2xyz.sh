@@ -31,7 +31,7 @@ do
                  grep "General timing and accounting informations" $i >/dev/null 2>&1
                  if [ $? -ne 0 ]
                  then
-                       current_info=$(echo "$i" |sed 's/\/OUTCAR//g' | awk -F'/' '{print $NF}')
+                       current_info=$(dirname "$i")
                        to_print+=($current_info)
                        let failed_count+=1
                        continue  				
@@ -40,7 +40,7 @@ do
                  MAXSCF=$(grep "NELMIN=.*NELMDL=" $i | awk -F'=' '{print $2}' | awk -F';' '{print $1}')
                  if [ ${MAXSCF} -eq ${lastscf} ]
                  then
-                       current_info=$(echo "$i" |sed 's/\/OUTCAR//g' | awk -F'/' '{print $NF}') 
+                       current_info=$(dirname "$i") 
                        to_print+=($current_info)
                        let failed_count+=1
                        continue  				
