@@ -3,15 +3,16 @@ import dpdata
 from glob import glob
 import sys, os
 
-def find_outcar(start_path='.'):
+def find_outcar(start_path):
     result = []
-    for root, dirs, files in os.walk(start_path):
-        if 'OUTCAR' in files:
-            result.append(os.path.join(root, 'OUTCAR'))
+    for path in start_path:
+        for root, dirs, files in os.walk(path):
+            if 'OUTCAR' in files:
+                result.append(os.path.join(root, 'OUTCAR'))     
     return result
 
 
-file_list = find_outcar(start_path=sys.argv[1])
+file_list = find_outcar(start_path=sys.argv[1:])   #这样就可以一次传入多个路径， 但是dpdata限制每次的结构原子个数一定要一样才行
 # print(file_list)
 total_system=LabeledSystem()
 
