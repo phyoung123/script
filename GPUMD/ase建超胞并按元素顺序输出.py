@@ -1,6 +1,16 @@
 from ase.io import read, write
 from gpyumd.atoms import GpumdAtoms
 from ase.build import sort
+from ase.build import make_supercell
+
+
+#################### 最简单的做法 ###############
+pri = read('POSCAR')
+P = np.array([[4, 0, 0], [0, 4, 0], [0, 0, 3]])  # transformation matrix
+atoms = make_supercell(pri, P, order = 'atom-major')  # 'atom-major'是指第一种原子拍完以后再排第二种
+write('supercell.vasp', atoms)
+
+#########################################
 
 
 atoms = read('CaSiO3_cubic.vasp')
